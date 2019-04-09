@@ -1,0 +1,68 @@
+<div id="popup-modal" >
+  <div id="googleMap"></div>
+  <style>
+    #googleMap {
+        height: 400px;
+    }
+  </style>
+  <script type="text/javascript">
+  var googleMap;
+  function initMap() {
+      var latitude = 46.6449538; // YOUR LATITUDE VALUE
+      var longitude = 3.7706681; // YOUR LONGITUDE VALUE
+      var myLatLng = {lat: latitude, lng: longitude};
+      var marker;
+      googleMap = new google.maps.Map(document.getElementById("googleMap"), {
+        center: myLatLng,
+        zoom: 5,
+        disableDoubleClickZoom: true,
+      });
+      google.maps.event.addListener(googleMap,"click",function(event) {
+          document.getElementById("pos_lat").value = event.latLng.lat();
+          document.getElementById("pos_lng").value =  event.latLng.lng();
+      });
+      google.maps.event.addListener(googleMap,"click",function(event) {
+        if (marker && marker.setMap) {
+          marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
+          position: event.latLng,
+          map: googleMap,
+          title: event.latLng.lat()+", "+event.latLng.lng()
+        });
+      });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $this->getGoogleMapAPIKey(); ?>&callback=initMap"
+          async defer></script>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                title: $.mage.__('Choose a location'),
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: $.mage.__('Continue'),
+                    class: 'mymodal1',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+            var popup = modal(options, $('#popup-modal'));
+            $("#map-popup").on('click',function(){
+                $("#popup-modal").modal("openModal");
+            });
+        }
+    );
+</script>

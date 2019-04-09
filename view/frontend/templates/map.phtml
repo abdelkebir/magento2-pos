@@ -1,0 +1,159 @@
+<?php
+$apiKey = $this->getScopeConfigValue('godogipos/google_api/api_key');
+$defaultLatitude = $this->getScopeConfigValue('godogipos/general/default_lat');
+$defaultLongitude = $this->getScopeConfigValue('godogipos/general/default_lng');
+$defaultZoom = $this->getScopeConfigValue('godogipos/general/default_zoom');
+?>
+<style>
+#map {
+  height: 425px;
+}
+.pos-search {
+	width: 30%;
+	display: inline-block;
+	float: left;
+}
+.pos-map {
+	width: 70%;
+	display: inline-block;
+}
+.pos-search .block.block-search {
+	margin: 0;
+	width: 100%;
+	border: 1px solid #ccc;
+	height: 425px;
+	z-index: 0;
+}
+#pointSearch {
+	padding: 0 17px;
+	border-left: 1px solid #ccc;
+}
+#pos_search {
+	border-bottom: 1px solid #ccc;
+}
+#pointSearch::before{
+
+}
+#pos_autocomplete ul {
+	padding: 0;
+	list-style: none;
+}
+#pos_autocomplete ul li {
+	padding: 20px;
+}
+#pos_autocomplete ul li div p strong {
+	display: block;
+}
+#pos_autocomplete ul li div p span {
+	display: block;
+}
+#pos_autocomplete {
+	max-height: 384px;
+	overflow: scroll;
+}
+#pos_search::placeholder {
+	color: #666;
+	opacity: 0.7;
+}
+#pos_search:-ms-input-placeholder {
+  color: #666;
+}
+#pos_search::-ms-input-placeholder {
+  color: #666;
+}
+</style>
+<div class="pos-search">
+    <div class="block block-search">
+        <div class="block block-content">
+              <div class="field search">
+                  <div class="control">
+                      <input id="pos_search" type="text" name="zip_city" value="" placeholder="Zip code or city" class="input-text" maxlength="30" autocomplete="off">
+                      <div class="actions">
+                          <button type="submit" id="pointSearch" title="Chercher" class="action search">
+                              <span data-bind="i18n: 'Zip code or city'">Zip code or city</span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              <div id="pos_autocomplete" class="pos-autocomplete">
+              </div>
+        </div>
+    </div>
+</div>
+<div class="pos-map">
+    <div id="latclicked"></div>
+    <div id="longclicked"></div>
+    <div id="zoomclicked"></div>
+    <div id="map"></div>
+</div>
+<script type="text/javascript">
+require(['jquery', 'domReady!'], function($){
+      $( "#pointSearch" ).click(function() {
+          console.log('Search clicked');
+          $.ajax({
+              showLoader: false,
+              url: "<?php echo $this->getAjaxUrl(); ?>",
+              data: { posr: $('#pos_search').val()},
+              type: "POST",
+              dataType: 'json'
+          }).done(function (data) {
+              var latitude = <?php if( $defaultLatitude != ''){echo $defaultLatitude;}else{ echo 46.8085015; } ?>; // YOUR LATITUDE VALUE
+              var longitude = <?php if( $defaultLongitude != ''){echo $defaultLongitude;}else{ echo 3.2693447; } ?>; // YOUR LONGITUDE VALUE
+              var myLatLng = {lat: latitude, lng: longitude};
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                zoom: <?php if( $defaultZoom != ''){echo $defaultZoom;}else{ echo 6; } ?>,
+                disableDoubleClickZoom: true,
+              });
+              var html ='<ul>';
+              $.each(data, function( key, value ) {
+                  var position = {lat: parseFloat(value.lat), lng: parseFloat(value.lng)};
+                  console.log(position);
+                  var marker = new google.maps.Marker({
+                      position: position,
+                      map: map,
+                      title: value.lat+', '+value.lng
+                  });
+                  html += '<li><div><p>';
+                  html += '<strong>' + value.title + '</strong>';
+                  html += '<span>' + value.address + '</span>';
+                  html += '<span>' + value.zip + ' ' + value.city + '</span>';
+                  html += '<span>' + value.country + '</span>';
+                  html += '</p></div></li>';
+              });
+              html +='</ul>';
+              $('#pos_autocomplete').html(html);
+              console.log('C********');
+              console.log(data);
+          }).error(function(xhr, error){
+              console.debug(xhr);
+              console.debug(error);
+          });
+      });
+      $( "#pointSearch" ).click();
+});
+var map;
+function initMap() {
+  /*
+
+    var marker;
+
+    google.maps.event.addListener(map,'click',function(event) {
+        document.getElementById('latclicked').innerHTML = event.latLng.lat();
+        document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+        document.getElementById('zoomclicked').innerHTML =  map.getZoom();
+    });
+    google.maps.event.addListener(map,'click',function(event) {
+      if (marker && marker.setMap) {
+        marker.setMap(null);
+      }
+      marker = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+        title: event.latLng.lat()+', '+event.latLng.lng()
+      });
+    });
+    */
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $this->getScopeConfigValue('godogipos/google_api/api_key'); ?>&callback=initMap" async defer></script>

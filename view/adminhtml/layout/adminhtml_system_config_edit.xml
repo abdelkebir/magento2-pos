@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page>
+    <body>
+        <referenceContainer name="js">
+            <block class="Godogi\Pos\Block\Adminhtml\System\Config\MapPopup" template="Godogi_Pos::system/config/map-popup.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceContainer name="js">
+				<block class="Godogi\Pos\Block\Adminhtml\System\Config\MapPopup" template="Godogi_Pos::map-popup.phtml"/>
+		</referenceContainer>
+		<referenceContainer name="left">
+			<block class="Godogi\Pos\Block\Adminhtml\Pos\Edit\Tabs" name="godogi_pos_pos.edit.tabs"/>
+		</referenceContainer>
+		<referenceContainer name="content">
+			<block class="Godogi\Pos\Block\Adminhtml\Pos\Edit" name="godogi_pos_pos.edit"/>
+		</referenceContainer>
+	</body>
+</page>
