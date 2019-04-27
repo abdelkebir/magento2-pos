@@ -70,7 +70,6 @@ class Info extends Generic implements TabInterface
             'required' => true
         ]
     );
-
     $fieldset_two = $form->addFieldset(
 			'address_fieldset',
 			['legend' => __('Address')]
@@ -116,10 +115,51 @@ class Info extends Generic implements TabInterface
 		);
 
     $fieldset_three = $form->addFieldset(
+			'info_fieldset',
+			['legend' => __('More Details')]
+		);
+    $fieldset_three->addField(
+			'tel',
+			'text',
+			[
+				'name' => 'lat',
+				'label' => __('Tel'),
+				'required' => false
+			]
+		);
+    $fieldset_three->addField(
+			'email',
+			'text',
+			[
+				'name' => 'lat',
+				'label' => __('Email'),
+				'required' => false
+			]
+		);
+    $fieldset_three->addField(
+			'date',
+			'text',
+			[
+				'name' => 'lat',
+				'label' => __('Date'),
+				'required' => false
+			]
+		);
+    $fieldset_three->addField(
+			'info',
+			'text',
+			[
+				'name' => 'lat',
+				'label' => __('More Info'),
+				'required' => false
+			]
+		);
+
+    $fieldset_four = $form->addFieldset(
 			'latlng_fieldset',
 			['legend' => __('Latitude & Longitude')]
 		);
-    $fieldset_three->addField(
+    $fieldset_four->addField(
 			'lat',
 			'text',
 			[
@@ -128,7 +168,7 @@ class Info extends Generic implements TabInterface
 				'required' => true
 			]
 		);
-    $lng = $fieldset_three->addField(
+    $lng = $fieldset_four->addField(
 			'lng',
 			'text',
 			[

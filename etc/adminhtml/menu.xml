@@ -2,7 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 <menu>
 	<add id="Godogi_Pos::content_pos" title="POSs" translate="title" module="Godogi_Pos" sortOrder="10" parent="Magento_Backend::content" resource="Godogi_Pos::content_pos"/>
-  <add id="Godogi_Pos::content_pos_index"  title="Points Of Sale"  module="Godogi_Pos" sortOrder="50" resource="Godogi_Pos::content_pos_index" action="godogi_pos/pos/index"  parent="Godogi_Pos::content_pos"/>
-	<add id="Godogi_Pos::content_pos_create"  title="Add Point"  module="Godogi_Pos" sortOrder="50" resource="Godogi_Pos::content_pos_create" action="godogi_pos/pos/create"  parent="Godogi_Pos::content_pos"/>
+  <add id="Godogi_Pos::content_pos_index"  title="Points Of Sale"  module="Godogi_Pos" sortOrder="20" resource="Godogi_Pos::content_pos_index" action="godogi_pos/pos/index"  parent="Godogi_Pos::content_pos"/>
+	<add id="Godogi_Pos::content_pos_create"  title="Add Point"  module="Godogi_Pos" sortOrder="30" resource="Godogi_Pos::content_pos_create" action="godogi_pos/pos/create"  parent="Godogi_Pos::content_pos"/>
+	<add id="Godogi_Pos::content_pos_import"  title="Import"  module="Godogi_Pos" sortOrder="40" resource="Godogi_Pos::content_pos_import" action="godogi_pos/import/import"  parent="Godogi_Pos::content_pos"/>
 </menu>
 </config>
