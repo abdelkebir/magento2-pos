@@ -1,5 +1,5 @@
 <?php
-namespace Godogi\Pos\Block\Adminhtml\Import\Import\Tab;
+namespace Godogi\Pos\Block\Adminhtml\Import\Edit\Tab;
 use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Backend\Block\Widget\Tab\TabInterface;
 use Magento\Backend\Block\Template\Context;

@@ -73,7 +73,7 @@ class Save extends Import
   {
       if ($this->csvUploader === null) {
           $this->csvUploader = \Magento\Framework\App\ObjectManager::getInstance()->get(
-              '<VendorName>\<ModuleName>\CsvUploader'
+              'Godogi\Pos\CsvUploader'
           );
       }
       return $this->csvUploader;
