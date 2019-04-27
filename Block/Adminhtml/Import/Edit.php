@@ -3,7 +3,7 @@ namespace Godogi\Pos\Block\Adminhtml\Import;
 use Magento\Backend\Block\Widget\Form\Container;
 use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Registry;
-class Import extends Container
+class Edit extends Container
 {
 	/**
 	* Core registry
@@ -31,12 +31,11 @@ class Import extends Container
 	*/
 	protected function _construct()
 	{
-		$this->_objectId = 'id';
-		$this->_controller = 'adminhtml_pos';
-		$this->_blockGroup = 'Godogi_Pos';
-		parent::_construct();
-		$this->buttonList->update('save', 'label', __('Import'));
-		$this->buttonList->update('delete', 'label', __('Delete'));
+			$this->_objectId = 'id';
+			$this->_controller = 'adminhtml_import';
+			$this->_blockGroup = 'Godogi_Pos';
+			$this->buttonList->update('save', 'label', __('Import'));
+			parent::_construct();
 	}
 	/**
 	* Retrieve text for header element depending on loaded news
@@ -45,12 +44,6 @@ class Import extends Container
 	*/
 	public function getHeaderText()
 	{
-		$posRegistry = $this->_coreRegistry->registry('godogi_pos_import');
-		if ($posRegistry->getId()) {
-			$posTitle = $this->escapeHtml($posRegistry->getTitle());
-			return __("Edit Pos '%1'", $posTitle);
-		} else {
 			return __('Add Pos');
-		}
 	}
 }

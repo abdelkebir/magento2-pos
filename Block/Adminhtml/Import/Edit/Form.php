@@ -1,5 +1,5 @@
 <?php
-namespace Godogi\Pos\Block\Adminhtml\Import\Import;
+namespace Godogi\Pos\Block\Adminhtml\Import\Edit;
 use Magento\Backend\Block\Widget\Form\Generic;
 class Form extends Generic
 {
@@ -9,11 +9,12 @@ class Form extends Generic
 	protected function _prepareForm()
 	{
 		/** @var \Magento\Framework\Data\Form $form */
+
     $form = $this->_formFactory->create(
         [
             'data' => [
-                'id'      => 'edit_form',
-                'action'  => $this->getUrl('*/*/save', ['id' => $this->getRequest()->getParam('id')]),
+                'id'      => 'import_edit_form',
+                'action'  => $this->getUrl('*/*/save'),
                 'method'  => 'post',
                 'enctype' => 'multipart/form-data'
             ]
