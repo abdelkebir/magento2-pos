@@ -4,7 +4,7 @@ namespace Godogi\Pos\Block\Adminhtml\System\Config;
 use Magento\Backend\Block\Template;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
-class MapPopup extends Template
+class Pos extends Template
 {
     protected $_scopeConfig;
 

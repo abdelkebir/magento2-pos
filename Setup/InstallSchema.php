@@ -48,6 +48,30 @@ class InstallSchema implements InstallSchemaInterface
           ['nullable' => false],
           'Country'
       )->addColumn(
+          'tel',
+          \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+          50,
+          ['nullable' => false],
+          'Tel'
+      )->addColumn(
+          'date',
+          \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+          50,
+          ['nullable' => false],
+          'Date'
+      )->addColumn(
+          'info',
+          \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+          50,
+          ['nullable' => false],
+          'Info'
+      )->addColumn(
+          'email',
+          \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+          50,
+          ['nullable' => false],
+          'Email'
+      )->addColumn(
           'lat',
           \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT,
           null,

@@ -2,7 +2,7 @@
 <page>
     <body>
         <referenceContainer name="js">
-            <block class="Godogi\Pos\Block\Adminhtml\System\Config\MapPopup" template="Godogi_Pos::system/config/map-popup.phtml"/>
+            <block class="Godogi\Pos\Block\Adminhtml\System\Config\Pos" template="Godogi_Pos::system/config/pos.phtml"/>
         </referenceContainer>
     </body>
 </page>
