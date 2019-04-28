@@ -1,7 +1,7 @@
 <?php
 namespace Godogi\Pos\Controller\Adminhtml\Import;
-use Godogi\Pos\Controller\Adminhtml\Pos;
-class Edit extends Pos
+use Godogi\Pos\Controller\Adminhtml\Import;
+class Edit extends Import
 {
 	/**
 	* @return void

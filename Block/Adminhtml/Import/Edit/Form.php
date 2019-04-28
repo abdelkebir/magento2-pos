@@ -13,7 +13,7 @@ class Form extends Generic
     $form = $this->_formFactory->create(
         [
             'data' => [
-                'id'      => 'import_edit_form',
+                'id'      => 'edit_form',
                 'action'  => $this->getUrl('*/*/save'),
                 'method'  => 'post',
                 'enctype' => 'multipart/form-data'

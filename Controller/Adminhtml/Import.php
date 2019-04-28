@@ -1,48 +1,34 @@
 <?php
 namespace Godogi\Pos\Controller\Adminhtml;
-use Magento\Framework\App\Filesystem\DirectoryList;
+
+use Magento\Framework\View\Result\PageFactory;
+use Godogi\Pos\Model\PosFactory;
+
 class Import extends \Magento\Backend\App\Action
 {
-    /**
-     * Image uploader
-     *
-     * @var \Ktpl\BannerSlider\BannerImageUploader
-     */
-    private $csvUploader;
 
     /**
-     * @var \Magento\Framework\Filesystem
-     */
-    protected $_filesystem;
+    * Result page factory
+    *
+    * @var PageFactory
+    */
+    protected $_resultPageFactory;
 
     /**
-     * Store manager
-     *
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $_storeManager;
+  	* Pos model factory
+  	*
+  	* @var PosFactory
+  	*/
+  	protected $_posFactory;
 
-    /**
-     * CSV Processor
-     *
-     * @var \Magento\Framework\File\Csv
-     */
-    protected $csvProcessor;
 
-    /**
-     * @param Magento\Backend\App\Action\Context $context
-     * @param Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param Magento\Framework\Filesystem $filesystem
-     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Filesystem $filesystem,
-        \Magento\Framework\File\Csv $csvProcessor
+        PageFactory $resultPageFactory,
+        PosFactory $posFactory
     ) {
-        $this->_filesystem = $filesystem;
-        $this->_storeManager = $storeManager;
-        $this->csvProcessor = $csvProcessor;
+        $this->_resultPageFactory = $resultPageFactory;
+        $this->_posFactory = $posFactory;
         parent::__construct($context);
     }
 
