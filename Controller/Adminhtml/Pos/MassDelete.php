@@ -18,7 +18,7 @@ class MassDelete extends Pos
 			}
 		}
 		$this->messageManager->addSuccess(
-			__('A total of %1 topic(s) were deleted.', count($collectionSize))
+			__('A total of %1 topic(s) were deleted.', $collectionSize)
 		);
 		$this->_redirect('*/*/index');
 	}
