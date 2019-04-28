@@ -11,8 +11,8 @@ class Tabs extends WidgetTabs
 	protected function _construct()
 	{
 		parent::_construct();
-		$this->setId('import_edit_tabs');
-		$this->setDestElementId('import_edit_form');
+		$this->setId('edit_tabs');
+		$this->setDestElementId('edit_form');
 		$this->setTitle(__('Pos Information'));
 	}
 }

@@ -73,14 +73,14 @@ class InstallSchema implements InstallSchemaInterface
           'Email'
       )->addColumn(
           'lat',
-          \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT,
-          null,
+					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+          50,
           ['nullable' => false],
           'Lattitude'
       )->addColumn(
           'lng',
-          \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT,
-          null,
+					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+          50,
           ['nullable' => false],
           'Longitude'
       )->addColumn(

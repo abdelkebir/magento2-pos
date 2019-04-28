@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <godogipos>
+            <import>
+                <csv_fields>titre,adresse,code_postal,ville,tel,date,info,payes,email</csv_fields>
+                <identity_fields>titre,adresse,code_postal,ville,payes</identity_fields>
+            </import>
+        </godogipos>
+    </default>
+</config>

@@ -34,8 +34,10 @@ class Edit extends Container
 			$this->_objectId = 'id';
 			$this->_controller = 'adminhtml_import';
 			$this->_blockGroup = 'Godogi_Pos';
-			$this->buttonList->update('save', 'label', __('Import'));
 			parent::_construct();
+			$this->buttonList->remove('reset');
+			$this->buttonList->remove('back');
+			$this->buttonList->update('save', 'label', __('Import'));
 	}
 	/**
 	* Retrieve text for header element depending on loaded news

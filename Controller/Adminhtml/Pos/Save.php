@@ -16,6 +16,13 @@ class Save extends Pos
 				$posModel->load($posId);
 			}
 			$formData = $this->getRequest()->getParam('pos');
+			/*
+			echo '<pre>';
+			print_r($formData);
+			echo '<pre>';
+			exit();
+			return;
+			*/
 			$posModel->setData($formData);
 
 			try {
