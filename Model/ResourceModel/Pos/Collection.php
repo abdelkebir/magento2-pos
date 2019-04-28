@@ -2,6 +2,7 @@
 namespace Godogi\Pos\Model\ResourceModel\Pos;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+	protected $_idFieldName = 'pos_id';
 	/**
 	 * Define resource model
 	 *

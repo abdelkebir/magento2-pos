@@ -28,15 +28,6 @@
                     <frontend_model>Godogi\Pos\Block\Adminhtml\System\Config\Form\Field\Jsconfig</frontend_model>
                 </field>
             </group>
-            <group id="import" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-                <label>CSV Import Configuration</label>
-                <field id="csv_fields" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>CSV Fields</label>
-                </field>
-                <field id="identity_fields" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>CSV Identity Fields</label>
-                </field>
-            </group>
         </section>
     </system>
 </config>

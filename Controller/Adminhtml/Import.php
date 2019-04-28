@@ -2,6 +2,7 @@
 namespace Godogi\Pos\Controller\Adminhtml;
 
 use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Godogi\Pos\Model\PosFactory;
 
 class Import extends \Magento\Backend\App\Action
@@ -21,14 +22,18 @@ class Import extends \Magento\Backend\App\Action
   	*/
   	protected $_posFactory;
 
+    protected $_scopeConfig;
+
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         PageFactory $resultPageFactory,
-        PosFactory $posFactory
+        PosFactory $posFactory,
+        ScopeConfigInterface $scopeConfig
     ) {
         $this->_resultPageFactory = $resultPageFactory;
         $this->_posFactory = $posFactory;
+        $this->_scopeConfig = $scopeConfig;
         parent::__construct($context);
     }
 
@@ -46,4 +51,12 @@ class Import extends \Magento\Backend\App\Action
 		{
 			return $this->_authorization->isAllowed('Godogi_Pos::content_pos');
 		}
+    /**
+     * @return string
+     */
+    public function getScopeConfigValue($key)
+    {
+				$storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORES;
+	      return $this->_scopeConfig->getValue($key, $storeScope);
+    }
 }
